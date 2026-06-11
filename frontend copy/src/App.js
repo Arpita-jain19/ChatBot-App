@@ -19,7 +19,7 @@ function App() {
   const [activeChatId, setActiveChatId] = useState(1);
   const [message, setMessage] = useState("");
   const [isTyping, setIsTyping] = useState(false);
-  const [copiedIndex, setCopiedIndex] = useState(null);
+  
   const [darkMode, setDarkMode] = useState(
   localStorage.getItem("theme") === "dark"
 );
@@ -87,15 +87,7 @@ const exportChatToPDF = () => {
   doc.save(`${activeChat.title}.pdf`);
 };
 
-const copyToClipboard = (text, index) => {
-  navigator.clipboard.writeText(text);
 
-  setCopiedIndex(index);
-
-  setTimeout(() => {
-    setCopiedIndex(null);
-  }, 2000);
-};
   const sendMessage = async () => {
     if (!message.trim()) return;
 
